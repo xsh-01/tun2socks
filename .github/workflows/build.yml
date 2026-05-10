@@ -25,7 +25,7 @@ jobs:
       - uses: goreleaser/goreleaser-action@v5
         with:
           distribution: goreleaser
-          args: release --clean
+          args: release --clean --snapshot
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         # Your GoReleaser Pro key, if you are using the 'goreleaser-pro'
