@@ -6,13 +6,18 @@ concurrency:
 
 on:
   workflow_dispatch:
+    inputs:
+      tags:
+      description: 'Test tags'
+      required: true
+      type: string
 
 jobs:
-  release:
+  build:
     name: Release
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v5
         with:
           fetch-depth: 0
@@ -22,7 +27,6 @@ jobs:
         with:
           check-latest: true
           go-version-file: 'go.mod'
-
 
       - name: Build
         run: make -j releases
