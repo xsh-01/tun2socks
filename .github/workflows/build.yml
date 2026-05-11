@@ -26,6 +26,7 @@ jobs:
         with:
           distribution: goreleaser
           args: release --clean --snapshot
+          workdir: test
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         # Your GoReleaser Pro key, if you are using the 'goreleaser-pro'
@@ -35,4 +36,4 @@ jobs:
       - name: Upload Releases
         uses: actions/upload-artifact@v4
         with:
-          path: ./build/tun2socks*
+          path: test/dist/*
